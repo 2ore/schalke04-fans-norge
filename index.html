@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Schalke 04 Fans Norge – fanklubben i Oslo</title>
+<meta name="theme-color" content="#06162E">
+<link rel="icon" href="img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Schalke 04 Fans Norge">
+<meta property="og:description" content="Fanklubben for norske Schalke-supportere, basert i Oslo. Se neste treff og bli medlem.">
+<meta property="og:locale" content="nb_NO">
+<meta name="description" content="Schalke 04 Fans Norge er fanklubben for norske Schalke-supportere, basert i Oslo. Se neste treff og bli medlem.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Schibsted+Grotesk:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<a class="skip" href="#main">Hopp til innhold</a>
+
+<!-- ===== MENY ØVERST ===== -->
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Schalke 04 Fans Norge, til toppen">
+      <img src="img/logo-96.webp" width="44" height="44" alt="">
+      <span>Schalke 04 Fans Norge</span>
+    </a>
+    <nav class="nav-links" aria-label="Hovedmeny">
+      <a href="#treff">Neste treff</a>
+      <a href="#om">Om oss</a>
+      <a href="#faq">Spørsmål</a>
+      <a class="btn small" href="#medlem">Bli medlem</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===== FORSIDEN: stor overskrift og to knapper ===== -->
+<section class="hero" id="top">
+  <div class="wrap hero-inner">
+    <img class="hero-logo" src="img/logo-720.webp" width="360" height="360" alt="Logoen til Schalke 04 Fans Norge">
+    <div class="hero-copy">
+      <!-- Endre bare teksten på «dim»-linjen. Den lyse kopien fylles inn automatisk. -->
+      <h1 class="lamp">
+        <span class="dim">Glück auf,<br>Oslo.</span>
+        <span class="lit" aria-hidden="true"></span>
+      </h1>
+      <p class="lede">Fanklubben for norske Schalke-supportere. Vi møtes i Oslo, ser kampene sammen og drar til Gelsenkirchen når vi kan.</p>
+      <div class="cta">
+        <a class="btn" href="#medlem">Bli medlem</a>
+        <a class="btn ghost" href="#treff">Se neste treff</a>
+      </div>
+      <p class="distance">Fra Oslo til Veltins-Arena er det omtrent 960 km i luftlinje. Det er lettere å ta seg dit sammen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NESTE TREFF (selve treffene ligger i js/config.js) ===== -->
+<section id="treff" aria-labelledby="treff-h">
+  <div class="wrap">
+    <h2 class="display" id="treff-h">Neste treff</h2>
+    <p class="intro">Alle treff er åpne for medlemmer. Nye ansikter i blått og hvitt er alltid velkomne.</p>
+    <div id="events" aria-live="polite"><noscript><p class="intro">Slå på JavaScript for å se neste treff, eller send oss en e-post.</p></noscript></div>
+  </div>
+</section>
+
+<!-- ===== BLI MEDLEM: tre steg + skjema ===== -->
+<section class="member" id="medlem" aria-labelledby="medlem-h">
+  <div class="wrap grid">
+    <div>
+      <h2 class="display" id="medlem-h">Bli medlem</h2>
+      <p class="lead">Du trenger ikke være ekspert på tysk fotball. Du trenger bare å heie på Schalke.</p>
+      <ol class="steps">
+        <li><div><strong>Send inn skjemaet</strong><span>Det tar to minutter.</span></div></li>
+        <li><div><strong>Betal kontingenten</strong><span>Du får betalingsinformasjon i svaret vi sender deg.</span></div></li>
+        <li><div><strong>Kom på neste treff</strong><span>Du får invitasjon til medlemsgruppen og hilser på de andre.</span></div></li>
+      </ol>
+      <p class="price">Kontingent: <strong id="price"></strong></p>
+    </div>
+
+    <div class="formbox">
+      <h3>Meld deg inn</h3>
+      <form id="join" novalidate>
+        <label for="f-name">Navn</label>
+        <input type="text" id="f-name" name="name" autocomplete="name" required>
+        <label for="f-mail">E-post</label>
+        <input type="email" id="f-mail" name="email" autocomplete="email" required>
+        <label for="f-phone">Mobil <small>(valgfritt)</small></label>
+        <input type="tel" id="f-phone" name="phone" autocomplete="tel">
+        <label for="f-city">Bosted</label>
+        <input type="text" id="f-city" name="city" autocomplete="address-level2" required>
+        <label for="f-why">Hvorfor Schalke? <small>(valgfritt)</small></label>
+        <textarea id="f-why" name="why"></textarea>
+        <div class="check">
+          <input type="checkbox" id="f-ok" required>
+          <label for="f-ok" style="margin:0;font-weight:400">Jeg godtar at fanklubben lagrer navn og kontaktinformasjon i medlemsregisteret.</label>
+        </div>
+        <button class="btn" type="submit">Send medlemsforespørsel</button>
+        <p class="error" id="err" role="alert" style="color:#B3261E;margin:.8rem 0 0;font-size:.95rem;display:none"></p>
+      </form>
+      <div class="sent" id="sent" role="status"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OM OSS + ORDLISTE ===== -->
+<section id="om" aria-labelledby="om-h">
+  <div class="wrap about">
+    <div>
+      <h2 class="display" id="om-h">Blått og hvitt, fra Oslo</h2>
+      <p>Schalke 04 Fans Norge samler norske supportere av Gelsenkirchen-klubben. Vi ser kampene sammen, møtes til hyggelig lag og reiser sørover til Veltins-Arena når anledningen byr seg.</p>
+      <dl class="acts">
+        <div><dt>Kampvisninger</dt><dd>Vi ser Schalke på storskjerm i Oslo, med sang og gode diskusjoner.</dd></div>
+        <div><dt>Medlemskvelder</dt><dd>Quiz, pizza og prat om alt fra taktikk til gamle helter.</dd></div>
+        <div><dt>Turer til Gelsenkirchen</dt><dd>Fellesreiser til hjemmekamper for medlemmer som vil være med.</dd></div>
+      </dl>
+    </div>
+    <aside class="gloss" aria-labelledby="gloss-h">
+      <h3 class="sub" id="gloss-h">Ny i Schalke-verdenen?</h3>
+      <dl>
+        <dt>Glück auf</dt>
+        <dd>Gruvearbeidernes hilsen i Ruhr-området. Schalke er en gruveklubb, og fansen hilser slik.</dd>
+        <dt>Königsblau</dt>
+        <dd>Kongeblått. Klubbens farge, og navnet fansen bruker om den.</dd>
+        <dt>Die Knappen</dt>
+        <dd>Kallenavnet på laget. «Knappen» er et gammelt ord for gruvearbeidere.</dd>
+        <dt>Nordkurve</dt>
+        <dd>Nordtribunen i Veltins-Arena, der de mest ihuga supporterne står.</dd>
+        <dt>Eurofighter</dt>
+        <dd>Laget som vant UEFA-cupen i 1997.</dd>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== SPØRSMÅL OG SVAR ===== -->
+<section class="faq" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <h2 class="display" id="faq-h">Spørsmål</h2>
+    <div class="list">
+      <details><summary>Må jeg bo i Oslo for å bli medlem?</summary><p>Nei. Treffene holdes i Oslo, men medlemmer fra hele Norge er velkomne.</p></details>
+      <details><summary>Må jeg kunne tysk?</summary><p>Nei. Litt «Glück auf» og et blått og hvitt skjerf tar deg langt.</p></details>
+      <details><summary>Hva får jeg som medlem?</summary><p>Invitasjon til kampvisninger og medlemskvelder, mulighet til å bli med på turer til Gelsenkirchen, og et fellesskap med andre norske Schalke-fans.</p></details>
+      <details><summary>Hvordan kontakter jeg dere?</summary><p>Send en e-post til <a id="faq-mail" href="#"></a>, så svarer vi så snart vi kan.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== BUNN ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <img class="foot-logo" src="img/logo-720.webp" width="120" height="120" alt="Logoen til Schalke 04 Fans Norge">
+      <p class="big">Glück auf!</p>
+      <p>Schalke 04 Fans Norge · Oslo</p>
+      <p class="fine">Nettsiden er laget av og for supportere. Navnet Schalke 04 og fargen Königsblau tilhører FC Gelsenkirchen-Schalke 04 e. V.</p>
+    </div>
+    <div class="links" id="foot-links"></div>
+  </div>
+</footer>
+
+<script src="js/config.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
