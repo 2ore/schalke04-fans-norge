@@ -9,14 +9,19 @@ const CONFIG = {
   email: "medlem@schalke04fans.no",   // TODO: bytt til fanklubbens e-postadresse
 
   // Kontingenten som vises under «Bli medlem»
-  price: "200 kr per år",                    // Skriv f.eks. "200 kr per år" hvis kontingenten er årlig
+  price: "200 kr per år",
 
   // Lenker i bunnen av siden. La stå tomt ("") for å skjule.
   // Eksempel: facebook: "https://www.facebook.com/dinside"
   links: {
     facebook: "https://www.facebook.com/groups/480101425825247",
     instagram: "https://www.instagram.com/fc_schalke_04_norge/"
-  }
+  },
+
+  // Adressen til Google-skjemaet som lagrer innmeldinger i regnearket.
+  // Se README.md, avsnittet «Innmeldingsskjema → regneark».
+  // Mens feltet er tomt, åpner skjemaet i stedet e-postprogrammet.
+  formUrl: "https://script.google.com/macros/s/AKfycbybTRhnW-rxuKou8RTZt87tlVQRwrRlP3TBBW3Ux2QWxvGZDh4qlRhYw9xrGdFitEAosg/exec"
 };
 
 /* ---------------------------------------------------------------------
@@ -35,7 +40,7 @@ const CONFIG = {
    --------------------------------------------------------------------- */
 
 const EVENTS = [
-  { date: "2026-12-05T18:00:00+02:00", hours: 3, title: "Julebord og Schalke - Dortmund", place: "Pub i Oslo sentrum (sted bekreftes)", desc: "Supporterklubbens årlige julebord. Alle er velkomne. Sammen ser vi Schalke - Dortmund." },
-  { date: "2027-03-24T18:00:00+02:00", hours: 3, title: "Kommende arrangement",     place: "Oslo (sted bekreftes)",               desc: "Mer info om arrangement kommer." },
-  { date: "2027-04-21T17:30:00+01:00", hours: 4, title: "Årsmøte",    place: "Oslo (sted bekreftes)",               desc: "Årsmøte først, deretter kamp på storskjerm." }
+  { date: "2026-12-05T17:00:00+01:00", hours: 3, title: "Julebord og Schalke - Dortmund", place: "Pub i Oslo sentrum (sted bekreftes)", desc: "Supporterklubbens årlige julebord. Alle er velkomne. Sammen ser vi Schalke - Dortmund." },
+  { date: "2027-03-24T17:00:00+01:00", hours: 3, title: "Kommende arrangement",           place: "Oslo (sted bekreftes)",               desc: "" },
+  { date: "2027-04-21T18:30:00+02:00", hours: 3, title: "Årsmøte",                        place: "Oslo (sted bekreftes)",               desc: "" }
 ];

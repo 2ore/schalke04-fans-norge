@@ -1,158 +1,107 @@
 # Schalke 04 Fans Norge – nettside
 
-Nettsiden til Schalke 04 Fans Norge, fanklubben i Oslo. Siden er ren HTML, CSS og JavaScript. Den trenger ingen installasjon, og du kan endre den rett på github.com.
+Nettsiden til Schalke 04 Fans Norge. Siden ligger på Vercel og henter filene fra GitHub. Hver gang du lagrer en endring på GitHub, oppdateres nettsiden av seg selv etter cirka ett minutt.
 
-Denne veiledningen er skrevet for deg som aldri har brukt GitHub. Ta det ett steg om gangen.
+**Innhold**
 
----
-
-## Innhold
-
-| Fil eller mappe | Hva det er |
+| Fil | Hva det er |
 |---|---|
-| `index.html` | Forsiden med all tekst |
-| `js/config.js` | **E-postadresse, kontingent, treff og sosiale medier.** Dette er filen du oftest endrer |
-| `js/main.js` | Nedtelling, skjema og lysanimasjon. Du trenger ikke røre den |
-| `css/style.css` | Farger, skrifter og utseende |
-| `img/` | Logo og ikoner |
-| `favicon.ico` | Lite ikon i nettleserfanen |
-| `robots.txt`, `_headers`, `.nojekyll` | Tekniske filer. Ikke rør |
+| `js/config.js` | **E-post, kontingent, lenker, treff og skjemaadresse.** Den du oftest endrer |
+| `index.html` | All annen tekst på siden |
+| `css/style.css` | Farger og utseende |
+| `js/main.js` | Nedtelling, skjema og animasjon. Du trenger ikke røre den |
+| `skjema/Code.gs` | Koden som lagrer innmeldinger i regnearket (brukes bare én gang, se del 2) |
+| `img/`, `favicon.ico` | Logo og ikoner |
 
 ---
 
-## Slik får du siden på nett (GitHub Pages)
+## 1. Slik oppdaterer du siden
 
-GitHub kan vise siden for deg helt gratis. Du trenger bare én konto. Du trenger ikke Cloudflare for å komme i gang.
+1. Gå til [github.com](https://github.com) og logg inn.
+2. Trykk på **profilbildet** øverst til høyre og velg **Your repositories**. Åpne `schalke04-fans-norge`.
+3. Klikk på filen du vil endre, for eksempel `js/config.js`. Mapper åpner du ved å klikke på dem.
+4. Trykk på **blyantikonet** (Edit this file) øverst til høyre i filen.
+5. Endre teksten. Trykk Ctrl+F (Cmd+F på Mac) for å søke etter teksten du vil endre.
+6. Trykk den grønne knappen **Commit changes…** øverst til høyre, og trykk **Commit changes** en gang til i vinduet som åpnes.
+7. Vent cirka ett minutt og åpne siden. Trykk Ctrl+F5 (Cmd+Shift+R på Mac) for å se den nye versjonen.
 
-### 1. Lag konto og «repository»
-
-Et repository er en mappe på GitHub der prosjektet ligger.
-
-1. Gå til [github.com](https://github.com) og trykk **Sign up**. Bekreft e-postadressen din.
-2. Trykk **+** øverst til høyre og velg **New repository**.
-3. Skriv `schalke04-fans-norge` i **Repository name**. Bruk ikke mellomrom eller æøå.
-4. Velg **Public**. Gratis GitHub Pages krever det. Ingenting hemmelig ligger i filene.
-5. La alle avkrysningsboksene under stå tomme og trykk **Create repository**.
-
-### 2. Last opp filene
-
-1. Pakk ut ZIP-filen på maskinen din.
-2. Trykk **uploading an existing file** på den tomme repository-siden.
-3. Åpne den utpakkede mappen og marker alt innholdet (Ctrl+A, eller Cmd+A på Mac). Dra det inn i nettleservinduet. Ikke dra selve mappen. `index.html` må ligge øverst i repositoryet.
-4. Vent til alt er lastet opp. Du skal se `index.html`, `css`, `js` og `img` i listen.
-5. Skriv «Første versjon» i feltet nederst og trykk **Commit changes**.
-
-### 3. Slå på GitHub Pages
-
-1. Gå til **Settings** (fanen øverst i repositoryet) og velg **Pages** i menyen til venstre.
-2. Velg **Deploy from a branch** under **Source**.
-3. Velg **main** under **Branch**, og `/ (root)` som mappe. Trykk **Save**.
-4. Vent 1–2 minutter og last siden på nytt. Adressen vises øverst:
-   `https://DITT-BRUKERNAVN.github.io/schalke04-fans-norge/`
-
-Siden er nå på nett.
-
----
-
-## Slik endrer du siden
-
-1. Gå til repositoryet ditt på github.com.
-2. Klikk på filen du vil endre, for eksempel `js/config.js`.
-3. Trykk **blyantikonet** (Edit this file) øverst til høyre i filen.
-4. Endre teksten.
-5. Trykk **Commit changes…** og deretter den grønne **Commit changes**-knappen.
-6. Siden oppdateres etter cirka ett minutt. Trykk Ctrl+F5 (Cmd+Shift+R på Mac) for å se den nye versjonen.
-
-**Gjorde du en feil?** Åpne filen og trykk **History**. Der ligger alle tidligere versjoner. Åpne den gamle versjonen, kopier innholdet og lim det inn i filen igjen.
+**Gjorde du en feil?** Åpne filen og trykk **History**. Der ligger alle tidligere versjoner. Åpne en gammel versjon, kopier teksten og lim den inn i filen igjen.
 
 ### Hva du endrer hvor
 
 | Du vil endre | Fil | Søk etter |
 |---|---|---|
-| Neste treff, nye treff, fjerne treff | `js/config.js` | `EVENTS` |
+| Nytt treff, endre eller fjerne treff | `js/config.js` | `EVENTS` |
 | E-postadresse | `js/config.js` | `email` |
 | Kontingent | `js/config.js` | `price` |
 | Facebook og Instagram | `js/config.js` | `links` |
-| Stor overskrift på forsiden | `index.html` | `Glück auf` |
+| Overskrift på forsiden | `index.html` | `Glück auf` |
 | Teksten under overskriften | `index.html` | `Fanklubben for` |
 | De tre stegene under «Bli medlem» | `index.html` | `Send inn skjemaet` |
 | Tekst under «Om oss» | `index.html` | `Blått og hvitt` |
-| Ordlisten «Ny i Schalke-verdenen?» | `index.html` | `Knappen` |
+| Ordlisten | `index.html` | `Knappen` |
 | Spørsmål og svar | `index.html` | `Må jeg bo i Oslo` |
 | Farger | `css/style.css` | `:root` (øverst) |
 
-Trykk Ctrl+F i redigeringsvinduet for å søke.
-
 ### Slik legger du til et treff
 
-Åpne `js/config.js`, kopier én hel linje i `EVENTS` (fra `{` til `},`) og lim den inn under. Endre innholdet.
+Åpne `js/config.js`, kopier én hel linje i `EVENTS` (fra `{` til `},`) og lim den inn under. Endre innholdet:
 
 ```
-{ date: "2026-12-05T18:00:00+01:00", hours: 3, title: "Julebord", place: "Oslo", desc: "Kort beskrivelse." },
+{ date: "2027-05-08T18:00:00+02:00", hours: 3, title: "Kampvisning", place: "Oslo", desc: "Kort beskrivelse." },
 ```
 
 - Datoformatet er `år-måned-dagTtime:minutt:00`.
 - Bruk `+02:00` om sommeren (sist i mars til sist i oktober) og `+01:00` om vinteren.
-- `hours` er hvor mange timer treffet varer. Det brukes i «Legg i kalenderen».
-- Treff som er passert forsvinner av seg selv.
-
-### Slik legger du til et spørsmål
-
-Kopier en hel blokk som starter med `<details>` og slutter med `</details>` i `index.html`. Lim den inn under en annen og bytt teksten.
+- `hours` er hvor mange timer treffet varer. Det brukes bare i «Legg i kalenderen».
+- Treff som er passert forsvinner av seg selv. Rekkefølgen har ingen betydning.
 
 ### Regler for å ikke ødelegge noe
 
 - Endre bare selve teksten. Ikke slett tegn som `< > { } ( ) " , ;`.
 - I `index.html` står tekst mellom `>` og `<`, for eksempel `<p>Dette kan du endre.</p>`.
 - I `config.js` står tekst mellom anførselstegn. Ikke fjern dem. Bruk «norske» tegn hvis du trenger anførselstegn inni en tekst.
-- Har du ødelagt noe, bruker du **History** som beskrevet over.
-
-### Bytte logo eller bilder
-
-- Logoen ligger i `img/`. Det trengs flere størrelser og ikoner, så be om hjelp til å lage nye logofiler.
-- Andre bilder laster du opp slik: gå inn i riktig mappe på GitHub, trykk **Add file → Upload files** og dra filen inn. Hold bildene under cirka 500 kB, ellers blir siden treg.
 
 ### La flere hjelpe til
 
-Gå til **Settings → Collaborators → Add people** og skriv inn GitHub-brukernavnet eller e-postadressen til den du vil gi tilgang.
+På GitHub: **Settings → Collaborators → Add people**. Skriv inn brukernavnet til den du vil gi tilgang.
 
 ---
 
-## Eget domene (valgfritt)
+## 2. Innmeldingsskjema → regneark
 
-Adressen `brukernavn.github.io/schalke04-fans-norge/` fungerer fint, men et eget domene ser bedre ut.
+Når noen melder seg inn, havner navn, e-post, mobil, bosted og svaret på «Hvorfor Schalke?» som en ny rad i et Google-regneark. Tidspunkt og samtykke lagres også. Regnearket kan lastes ned som Excel-fil når du vil ha det.
 
-1. Kjøp domenet hos en registrar. For `.no` bruker du en norsk registrar, for eksempel Domeneshop. Foreninger og privatpersoner har ulike krav for `.no`, så les vilkårene hos registraren.
-2. Gå til **Settings → Pages → Custom domain** på GitHub og skriv inn domenet.
-3. Følg GitHubs instruksjoner for DNS-innstillingene hos registraren. Det kan ta fra noen minutter til et par timer.
+Dette gjør du **én gang**. Det tar cirka 10 minutter og koster ingenting.
+
+1. **Lag regnearket.** Gå til [sheets.google.com](https://sheets.google.com) og logg inn. Bruk helst en Google-konto som fanklubben eier, ikke en privat (se del 3). Lag et nytt, tomt regneark og kall det «Medlemmer – Schalke 04 Fans Norge».
+2. **Åpne kodeeditoren.** Velg **Utvidelser → Apps Script** i menyen.
+3. **Lim inn koden.** Slett alt som står der. Åpne `skjema/Code.gs` fra denne mappen, kopier hele innholdet og lim det inn. Trykk **Lagre** (diskettikonet).
+4. **(Valgfritt) e-postvarsel.** Vil du ha en e-post hver gang noen melder seg inn, skriver du e-postadressen din mellom anførselstegnene på linjen `VARSLE_EPOST`. Lagre på nytt.
+5. **Publiser.** Trykk **Publiser** (Deploy) øverst til høyre og velg **Ny implementering** (New deployment). Trykk på tannhjulet ved «Velg type» og velg **Nettapp** (Web app). Fyll inn:
+   - **Kjør som / Execute as:** Meg (Me)
+   - **Hvem har tilgang / Who has access:** Alle (Anyone)
+
+   Trykk **Publiser**.
+6. **Gi tilgang.** Google ber om tillatelse. Velg kontoen din. Du får en advarsel om at appen ikke er verifisert. Det er normalt, siden du har laget koden selv. Trykk **Avansert** (Advanced), deretter **Gå til … (utrygt)**, og trykk **Tillat**.
+7. **Kopier adressen.** Du får en «Nettapp-URL» som slutter på `/exec`. Kopier den.
+8. **Legg den inn på nettsiden.** Åpne `js/config.js` på GitHub (se del 1) og lim adressen mellom anførselstegnene på linjen `formUrl: ""`. Lagre med **Commit changes**.
+9. **Test.** Åpne adressen fra punkt 7 i nettleseren. Du skal se «OK». Send så en testinnmelding fra nettsiden. Etter få sekunder dukker en ny rad opp i arket «Medlemmer». Slett testraden etterpå.
+
+**Laste ned som Excel:** Åpne regnearket og velg **Fil → Last ned → Microsoft Excel (.xlsx)**.
+
+**Kolonnen «Betalt?»** er tom. Fyll inn «Ja» etter hvert som kontingenten kommer inn.
+
+**Endrer du koden senere:** Trykk **Publiser → Administrer implementeringer**, trykk blyantikonet, velg **Ny versjon** og publiser. Adressen forblir den samme.
+
+**Hvis noe ikke virker:** Sjekk at «Hvem har tilgang» står på «Alle», og at adressen i `config.js` er kopiert helt (fra `https://` til `/exec`). Så lenge `formUrl` er tom, åpner skjemaet e-postprogrammet i stedet.
 
 ---
 
-## Alternativ: Cloudflare i stedet for GitHub Pages
+## 3. Dette trenger du
 
-Du kan la Cloudflare hente siden fra GitHub. Endringer gjør du fortsatt på github.com. Det er bare hosting som flyttes.
+- **En Google-konto for fanklubben.** Regnearket eies av kontoen som lager det. Bruker du en felles konto (for eksempel `schalke04fansnorge@gmail.com`), forsvinner ikke medlemslisten om en person slutter i styret.
+- **En ekte e-postadresse for fanklubben.** Adressen `medlem@schalke04fans.no` på siden er et eksempel som jeg har funnet på. Domenet er trolig ikke ditt, så bytt den i `js/config.js` før noen faktisk bruker den. Den felles Google-kontoen kan også brukes som kontaktadresse.
+- **Betalingsinformasjon.** Skjemaet sender ikke noe automatisk svar til nye medlemmer. Den som følger opp medlemmene, svarer på e-post med kontonummer eller Vipps-nummer for kontingenten på 200 kr.
 
-1. Lag en konto på [dash.cloudflare.com](https://dash.cloudflare.com).
-2. Gå til **Workers & Pages → Create application → Pages → Connect to Git** og velg repositoryet.
-3. La **Framework preset** stå på *None*. La **Build command** stå tom, og skriv `/` i **Build output directory**.
-4. Trykk **Save and Deploy**. Du får en adresse som `navn.pages.dev`.
-5. Cloudflare oppdaterer siden hver gang du lagrer en endring på GitHub.
-
-Cloudflare endrer menyene sine av og til, så navnene kan avvike litt.
-
----
-
-## Se siden på egen maskin
-
-Pakk ut filene og dobbeltklikk på `index.html`. Skriftene lastes fra Google Fonts og vises bare når du er på nett.
-
----
-
-## Godt å vite
-
-- **Medlemsskjemaet** lagrer ingenting. Det åpner e-postprogrammet til den som melder seg inn, med en ferdig utfylt e-post til adressen i `js/config.js`. Adressen står også synlig etter at de har trykket send.
-- **Personvern:** Skriftene lastes fra Google Fonts. Vil du unngå det, kan skriftene ligge i prosjektet i stedet («self-hosting»).
-- **Sjekk innholdet før publisering.** E-postadresse, treff og svarene under «Spørsmål» er eksempler og må bekreftes.
-- **Navn og fargen Königsblau** tilhører FC Gelsenkirchen-Schalke 04 e. V. Det står også i bunnteksten.
-
-Glück auf!
+**Personvern:** Medlemslisten inneholder personopplysninger. Del regnearket bare med de i styret som trenger det (**Del**-knappen i regnearket). Ikke gjør det til «alle med lenken». Slett opplysninger hvis noen ber om det.

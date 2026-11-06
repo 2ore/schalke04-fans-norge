@@ -191,3 +191,8 @@ details p{margin:0 0 1.2rem;max-width:36rem;color:var(--ink-soft)}
 .foot a{color:#fff}
 .foot .fine{font-size:.85rem;color:#8FA9CC;max-width:34rem;margin-top:1.2rem}
 .foot .links{display:flex;gap:1.2rem;flex-wrap:wrap}
+
+/* Skjult felt som fanger opp søppelroboter. Ikke fjern. */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.formbox .btn:disabled{opacity:.6;cursor:wait}
+.sent h4{margin:0 0 .4rem;font-family:var(--display);font-weight:800;font-size:1.5rem;text-transform:uppercase;line-height:1}

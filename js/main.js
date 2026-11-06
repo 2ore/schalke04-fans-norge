@@ -80,31 +80,66 @@ function renderEvents(){
 }
 renderEvents();
 
-/* ---- Medlemsskjema (åpner e-post med ferdig utfylt melding) ---- */
-document.getElementById('join').addEventListener('submit', ev => {
-  ev.preventDefault();
-  const f = ev.target, err = document.getElementById('err'), sent = document.getElementById('sent');
-  const name = f.name.value.trim(), email = f.email.value.trim(), city = f.city.value.trim();
-  const problems = [];
-  if(!name) problems.push('navn');
-  if(!/^\S+@\S+\.\S+$/.test(email)) problems.push('en gyldig e-postadresse');
-  if(!city) problems.push('bosted');
-  if(!document.getElementById('f-ok').checked) problems.push('samtykke til at vi lagrer opplysningene');
-  if(problems.length){
-    err.style.display = 'block';
-    err.textContent = 'Du mangler: ' + problems.join(', ') + '.';
-    return;
-  }
-  err.style.display = 'none';
-  const subject = 'Medlemskap i Schalke 04 Fans Norge';
-  const body = ['Hei!','','Jeg vil gjerne bli medlem.','',
-    'Navn: ' + name, 'E-post: ' + email, 'Mobil: ' + (f.phone.value.trim() || '–'), 'Bosted: ' + city,
-    'Hvorfor Schalke: ' + (f.why.value.trim() || '–'), '', 'Glück auf!'].join('\n');
-  sent.innerHTML = `<p><strong>E-postprogrammet ditt åpnes med søknaden ferdig utfylt.</strong> Trykk send der, så tar vi kontakt.</p>
-    <p>Åpnet ingenting? Send navn, e-post og bosted til <a href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a>.</p>`;
-  sent.classList.add('show');
-  window.location.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-});
+/* ---- Medlemsskjema ----
+   Sender innmeldingen til Google-regnearket (CONFIG.formUrl).
+   Er formUrl tom, åpnes e-postprogrammet i stedet (reserveløsning). */
+(function(){
+  const form = document.getElementById('join'), err = document.getElementById('err'),
+        sent = document.getElementById('sent'), btn = document.getElementById('send');
+
+  const showError = html => { err.innerHTML = html; err.style.display = 'block'; };
+  const mailFallback = `Noe gikk galt. Prøv igjen, eller send navn, e-post og bosted til <a href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a>.`;
+
+  form.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const f = form;
+    const data = {
+      name:  f.name.value.trim(),
+      email: f.email.value.trim(),
+      phone: f.phone.value.trim(),
+      city:  f.city.value.trim(),
+      why:   f.why.value.trim(),
+      consent: document.getElementById('f-ok').checked ? 'ja' : '',
+      website: f.website.value            // skjult felt: skal alltid være tomt
+    };
+    const problems = [];
+    if(!data.name) problems.push('navn');
+    if(!/^\S+@\S+\.\S+$/.test(data.email)) problems.push('en gyldig e-postadresse');
+    if(!data.city) problems.push('bosted');
+    if(!data.consent) problems.push('samtykke til at vi lagrer opplysningene');
+    if(problems.length){ showError('Du mangler: ' + esc(problems.join(', ')) + '.'); return; }
+    err.style.display = 'none';
+
+    /* Reserveløsning uten regneark */
+    if(!CONFIG.formUrl){
+      const body = ['Hei!','','Jeg vil gjerne bli medlem.','','Navn: ' + data.name,'E-post: ' + data.email,
+        'Mobil: ' + (data.phone || '–'),'Bosted: ' + data.city,'Hvorfor Schalke: ' + (data.why || '–'),'','Glück auf!'].join('\n');
+      sent.innerHTML = `<p><strong>E-postprogrammet ditt åpnes med søknaden ferdig utfylt.</strong> Trykk send der, så tar vi kontakt.</p>
+        <p>Åpnet ingenting? Send navn, e-post og bosted til <a href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a>.</p>`;
+      sent.classList.add('show');
+      window.location.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent('Medlemskap i Schalke 04 Fans Norge') + '&body=' + encodeURIComponent(body);
+      return;
+    }
+
+    /* Send til regnearket */
+    btn.disabled = true; btn.textContent = 'Sender …';
+    const ctrl = new AbortController(), timer = setTimeout(() => ctrl.abort(), 20000);
+    try{
+      await fetch(CONFIG.formUrl, { method:'POST', mode:'no-cors', body:new URLSearchParams(data), signal:ctrl.signal });
+      clearTimeout(timer);
+      const first = data.name.split(/\s+/)[0];
+      sent.innerHTML = '<h4></h4><p>Innmeldingen din er mottatt. Vi tar kontakt på e-post med betalingsinformasjon og info om neste treff.</p>';
+      sent.querySelector('h4').textContent = 'Takk, ' + first + '!';
+      sent.classList.add('show');
+      form.style.display = 'none';
+      sent.setAttribute('tabindex','-1'); sent.focus();
+    }catch(e){
+      clearTimeout(timer);
+      showError(mailFallback);
+      btn.disabled = false; btn.textContent = 'Send medlemsforespørsel';
+    }
+  });
+})();
 
 /* ---- Grubelykta i hero ---- */
 (function(){
