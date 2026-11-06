@@ -40,7 +40,7 @@ const CONFIG = {
    --------------------------------------------------------------------- */
 
 const EVENTS = [
-  { date: "2026-12-05T17:00:00+01:00", hours: 3, title: "Julebord og Schalke - Dortmund", place: "Pub i Oslo sentrum (sted bekreftes)", desc: "Supporterklubbens årlige julebord. Alle er velkomne. Sammen ser vi Schalke - Dortmund." },
-  { date: "2027-03-24T17:00:00+01:00", hours: 3, title: "Kommende arrangement",           place: "Oslo (sted bekreftes)",               desc: "" },
-  { date: "2027-04-21T18:30:00+02:00", hours: 3, title: "Årsmøte",                        place: "Oslo (sted bekreftes)",               desc: "" }
+  { date: "2027-02-18T18:00:00+01:00", hours: 2, title: "Styremøte",            place: "Oslo (sted bekreftes)", desc: "Møte for fanklubbens styre." },
+  { date: "2027-03-24T17:00:00+01:00", hours: 3, title: "Kommende arrangement", place: "Oslo (sted bekreftes)", desc: "" },
+  { date: "2027-04-21T18:30:00+02:00", hours: 3, title: "Årsmøte",              place: "Oslo (sted bekreftes)", desc: "" }
 ];

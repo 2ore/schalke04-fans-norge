@@ -32,6 +32,7 @@
     </a>
     <nav class="nav-links" aria-label="Hovedmeny">
       <a href="#treff">Neste treff</a>
+      <a href="#kamper" id="nav-kamper" hidden>Kamper</a>
       <a href="#om">Om oss</a>
       <a href="#faq">Spørsmål</a>
       <a class="btn small" href="#medlem">Bli medlem</a>
@@ -66,6 +67,39 @@
     <h2 class="display" id="treff-h">Neste treff</h2>
     <p class="intro">Alle treff er åpne for de som heier på Schalke. Nye ansikter i blått og hvitt er alltid velkomne.</p>
     <div id="events" aria-live="polite"><noscript><p class="intro">Slå på JavaScript for å se neste treff, eller send oss en e-post.</p></noscript></div>
+  </div>
+</section>
+
+<!-- ===== KAMPENE: neste kamp, kampprogram, tabell og form (data ligger i js/kampdata.js) ===== -->
+<section class="matches" id="kamper" aria-labelledby="kamper-h" hidden>
+  <div class="wrap">
+    <h2 class="display" id="kamper-h">Kampene</h2>
+    <p class="intro">Alle tider er norsk tid.</p>
+    <div class="m-grid">
+      <div class="m-main">
+        <article class="nextmatch" id="nextmatch" aria-label="Neste kamp"></article>
+        <div class="fx">
+          <div class="fx-head">
+            <h3 class="sub">Kampprogram</h3>
+            <div class="seg" role="group" aria-label="Velg visning">
+              <button type="button" data-v="up" aria-pressed="true">Kommende</button>
+              <button type="button" data-v="res" aria-pressed="false">Resultater</button>
+            </div>
+          </div>
+          <ul class="fx-list" id="fx-list"></ul>
+          <div class="fx-foot">
+            <button type="button" class="linkbtn" id="fx-more" hidden></button>
+            <button type="button" class="linkbtn" id="fx-ics">Legg kampene i kalenderen</button>
+          </div>
+        </div>
+      </div>
+      <div class="m-side">
+        <h3 class="sub" id="tab-h">Tabell <span id="season"></span></h3>
+        <div class="tablewrap"><table class="m-table" id="m-table" aria-labelledby="tab-h"></table></div>
+        <p class="m-legend">K kamper · S seiere · U uavgjort · T tap · P poeng</p>
+      </div>
+    </div>
+    <p class="m-note" id="m-note"></p>
   </div>
 </section>
 
@@ -168,6 +202,8 @@
 </footer>
 
 <script src="js/config.js" defer></script>
+<script src="js/kampdata.js" defer></script>
 <script src="js/main.js" defer></script>
+<script src="js/kamper.js" defer></script>
 </body>
 </html>

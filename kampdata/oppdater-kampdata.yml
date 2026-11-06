@@ -1,0 +1,34 @@
+# Denne filen skal ligge på GitHub som:  .github/workflows/oppdater-kampdata.yml
+# (se README.md, del 3, for hvordan du oppretter den)
+
+name: Oppdater kampdata
+
+on:
+  schedule:
+    - cron: '17 */3 * * *'     # hver tredje time
+  workflow_dispatch:           # gir en knapp for å kjøre den manuelt
+
+permissions:
+  contents: write
+
+jobs:
+  oppdater:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Hent tabell og kamper
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: node kampdata/oppdater-kampdata.mjs
+      - name: Lagre hvis noe er endret
+        run: |
+          if [ -n "$(git status --porcelain js/kampdata.js)" ]; then
+            git config user.name "kampdata-robot"
+            git config user.email "actions@users.noreply.github.com"
+            git add js/kampdata.js
+            git commit -m "Oppdater kampdata"
+            git push
+          fi
